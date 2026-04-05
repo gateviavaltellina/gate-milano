@@ -26,7 +26,7 @@ const venueOrder: Record<string, number> = {
 async function getEvents(): Promise<Event[]> {
   const events = await client.fetch(
     `*[_type == "event" && dateTime(date) >= dateTime(now()) - 60*60*6] | order(date asc) {
-      _id, title, date, genres, venue, ticketUrl, isSoldOut,
+      _id, title, date, genres, venue, ticketUrl, isSoldOut, isSellingFast,
       image { asset { _ref } }
     }`
   );
@@ -101,7 +101,7 @@ export default async function Home() {
               <Link
                 key={cat.label}
                 href={cat.href}
-                className={`relative aspect-square flex items-center justify-center overflow-hidden group rounded ${!cat.image ? `bg-gradient-to-b ${cat.bg}` : ""}`}
+                className={`relative aspect-square flex items-center justify-center overflow-hidden group rounded-3xl ${!cat.image ? `bg-gradient-to-b ${cat.bg}` : ""}`}
               >
                 {cat.image && (
                   <>
@@ -146,7 +146,7 @@ export default async function Home() {
                 Gate Milano is aimed at companies, agencies and promoters for the purpose to
                 transform the requested event into a unique experience of its kind.
               </p>
-              <div className="border border-red-600 rounded-xl p-6">
+              <div className="border border-red-600 rounded-3xl p-6">
                 <p className="text-sm text-center text-gate-white mb-4">
                   Sign-up now to receive offers and updates
                   <br />

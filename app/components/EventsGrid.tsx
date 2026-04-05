@@ -9,6 +9,7 @@ export interface Event {
   venue?: string;
   ticketUrl?: string;
   isSoldOut?: boolean;
+  isSellingFast?: boolean;
   image?: { asset: { _ref: string } };
 }
 
@@ -38,8 +39,17 @@ export default function EventsGrid({ events }: { events: Event[] }) {
           key={event._id}
           className="border border-gate-border rounded-3xl overflow-hidden flex flex-col"
         >
+          {/* Selling Fast badge */}
+          {event.isSellingFast && !event.isSoldOut && (
+            <div className="px-4 pt-3">
+              <span className="inline-block bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                Selling Fast
+              </span>
+            </div>
+          )}
+
           {/* Poster image */}
-          <a
+          <
             href={event.ticketUrl ?? "#"}
             target="_blank"
             rel="noopener noreferrer"

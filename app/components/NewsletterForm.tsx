@@ -28,7 +28,7 @@ export default function NewsletterForm({ variant = "full" }: { variant?: "simple
   if (status === "success") {
     return (
       <p className="text-center text-gate-white py-4">
-        Grazie! Ti aggiorneremo sui prossimi eventi.
+        You're in. See you on the dancefloor.
       </p>
     );
   }
@@ -58,12 +58,12 @@ export default function NewsletterForm({ variant = "full" }: { variant?: "simple
         name="email"
         placeholder="Email"
         required
-        className="bg-transparent border border-gate-border px-4 py-3 text-sm text-gate-white placeholder-gate-muted focus:outline-none focus:border-gate-white rounded"
+        className="bg-transparent border border-gate-border px-4 py-3 text-sm text-gate-white placeholder-gate-muted focus:outline-none focus:border-gate-white rounded-full"
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className="bg-gate-red hover:bg-gate-red-dark text-gate-white font-bold py-3 px-6 rounded transition-colors uppercase tracking-wide text-sm disabled:opacity-60"
+        className="bg-gate-red hover:bg-gate-red-dark text-gate-white font-bold py-3 px-6 rounded-full transition-colors uppercase tracking-wide text-sm disabled:opacity-60"
       >
         {status === "loading" ? "..." : "Subscribe"}
       </button>

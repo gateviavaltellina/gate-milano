@@ -82,6 +82,12 @@ export const event = defineType({
       type: "boolean",
       initialValue: false,
     }),
+    defineField({
+      name: "isSellingFast",
+      title: "Selling Fast",
+      type: "boolean",
+      initialValue: false,
+    }),
   ],
   orderings: [
     {
