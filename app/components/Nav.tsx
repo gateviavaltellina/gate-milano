@@ -24,7 +24,7 @@ export default function Nav() {
       {/* Closed nav bar */}
       {!open && (
         <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3">
-          <div className="flex items-center justify-between w-full max-w-md bg-white rounded-full px-5 py-2.5 shadow-md">
+          <div className="flex items-center justify-between w-full max-w-md bg-white rounded-full px-5 py-1.5 shadow-md">
             <Link href="/">
               <Image src="/logos/GateLogos/250727_MKT_LogoVectorialBlack.svg" alt="Gate Milano" width={60} height={20} priority />
             </Link>

@@ -38,13 +38,18 @@ export default function EventsGrid({ events }: { events: Event[] }) {
           className="border border-gate-border rounded-3xl overflow-hidden flex flex-col"
         >
           {/* Poster image */}
-          <div className="relative aspect-square bg-gate-gray">
+          <a
+            href={event.ticketUrl ?? "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative aspect-square bg-gate-gray block"
+          >
             {event.image?.asset?._ref ? (
               <Image
                 src={urlFor(event.image).width(600).height(600).url()}
                 alt={event.title}
                 fill
-                className="object-cover"
+                className="object-cover hover:opacity-80 transition-opacity"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             ) : (
@@ -57,7 +62,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 </span>
               </div>
             )}
-          </div>
+          </a>
 
           {/* Buy Tickets button */}
           <div className="px-4 pb-2 pt-2">
@@ -83,9 +88,14 @@ export default function EventsGrid({ events }: { events: Event[] }) {
 
           {/* Info */}
           <div className="px-4 pt-2 pb-4 flex flex-col gap-2 bg-gate-black">
-            <h3 className="font-bold text-xl text-gate-white leading-tight uppercase tracking-wide">
+            <a
+              href={event.ticketUrl ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-xl text-gate-white leading-tight uppercase tracking-wide hover:text-red-500 transition-colors"
+            >
               {event.title}
-            </h3>
+            </a>
             {event.genres?.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {event.genres.map((g) => (
