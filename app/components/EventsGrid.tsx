@@ -6,6 +6,7 @@ export interface Event {
   title: string;
   date: string;
   genres: string[];
+  venue?: string;
   ticketUrl?: string;
   isSoldOut?: boolean;
   image?: { asset: { _ref: string } };
@@ -96,6 +97,11 @@ export default function EventsGrid({ events }: { events: Event[] }) {
             >
               {event.title}
             </a>
+            {event.venue && (
+              <span className="text-xs border border-red-600 text-red-500 px-2 py-0.5 rounded-full w-fit">
+                {event.venue}
+              </span>
+            )}
             {event.genres?.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {event.genres.map((g) => (
@@ -108,7 +114,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 ))}
               </div>
             )}
-            <p className="text-lg uppercase text-gate-white" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>{formatDate(event.date)}</p>
+            <a href={event.ticketUrl ?? "#"} target="_blank" rel="noopener noreferrer" className="text-lg uppercase text-gate-white hover:text-red-500 transition-colors" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>{formatDate(event.date)}</a>
           </div>
         </div>
       ))}

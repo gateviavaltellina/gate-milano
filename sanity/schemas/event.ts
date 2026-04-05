@@ -47,6 +47,19 @@ export const event = defineType({
       },
     }),
     defineField({
+      name: "venue",
+      title: "Venue",
+      type: "string",
+      options: {
+        list: [
+          { title: "Main Room", value: "Main Room" },
+          { title: "Club Room", value: "Club Room" },
+          { title: "Alcatraz Milano", value: "Alcatraz Milano" },
+          { title: "Carroponte Milano", value: "Carroponte Milano" },
+        ],
+      },
+    }),
+    defineField({
       name: "image",
       title: "Event Image",
       type: "image",

@@ -16,13 +16,28 @@ interface SiteSettings {
   googleMapsUrl?: string;
 }
 
+const venueOrder: Record<string, number> = {
+  "Carroponte Milano": 0,
+  "Alcatraz Milano": 1,
+  "Main Room": 2,
+  "Club Room": 3,
+};
+
 async function getEvents(): Promise<Event[]> {
-  return client.fetch(
+  const events = await client.fetch(
     `*[_type == "event" && dateTime(date) >= dateTime(now()) - 60*60*6] | order(date asc) {
-      _id, title, date, genres, ticketUrl, isSoldOut,
+      _id, title, date, genres, venue, ticketUrl, isSoldOut,
       image { asset { _ref } }
     }`
   );
+  return events.sort((a: Event, b: Event) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    if (dateA !== dateB) return dateA - dateB;
+    const vA = venueOrder[a.venue ?? ""] ?? 99;
+    const vB = venueOrder[b.venue ?? ""] ?? 99;
+    return vA - vB;
+  });
 }
 
 async function getSiteSettings(): Promise<SiteSettings | null> {
