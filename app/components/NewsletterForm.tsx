@@ -3,11 +3,26 @@
 import { useState } from "react";
 
 export default function NewsletterForm({ variant = "full" }: { variant?: "simple" | "full" }) {
-  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("success");
+    setStatus("loading");
+
+    const form = e.currentTarget;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (res.ok) {
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
   }
 
   if (status === "success") {
@@ -47,11 +62,15 @@ export default function NewsletterForm({ variant = "full" }: { variant?: "simple
       />
       <button
         type="submit"
-        className="bg-gate-red hover:bg-gate-red-dark text-gate-white font-bold py-3 px-6 rounded transition-colors uppercase tracking-wide text-sm"
+        disabled={status === "loading"}
+        className="bg-gate-red hover:bg-gate-red-dark text-gate-white font-bold py-3 px-6 rounded transition-colors uppercase tracking-wide text-sm disabled:opacity-60"
       >
-        Subscribe
+        {status === "loading" ? "..." : "Subscribe"}
       </button>
-      <p className="text-xs text-gate-muted leading-relaxed">
+      {status === "error" && (
+        <p className="text-xs text-red-400">Something went wrong. Please try again.</p>
+      )}
+      <p className="text-[0.6rem] text-gate-muted leading-relaxed">
         We will keep your data as long as you allow us and we are bound by law. Your Data Protection
         rights are Access, Rectification, Erasure, Restriction of processing, Data Portability and
         Object. You might exercise them by written enquiry to SING SING SRL, Via Valtellina 21,

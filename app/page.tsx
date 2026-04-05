@@ -51,7 +51,6 @@ export default async function Home() {
   const email = settings?.email ?? "info@gatemilano.com";
   const phone = settings?.phone ?? "+39 391 487 6443";
   const address = settings?.address;
-  const instagram = settings?.instagram ?? "gatemilano";
 
   return (
     <>
@@ -91,13 +90,45 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Category Cards */}
+        <section className="bg-gate-black py-4 px-4">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2">
+            {[
+              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775418580/20260321_PhotoIHateModels-33_gadeub_c_fill_w_1200_h_1200_ar_1_1_uib3sc.webp" },
+              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775419340/Photo_01-03-26_04_49_58_ysseqo_c_fill_w_1200_h_1200_ar_1_1_l5vz2d.webp" },
+              { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775419244/GateMainRoom-ph-12_11zon_m2cpms_c_fill_w_1200_h_1200_ar_1_1_zukpwp.webp" },
+            ].map((cat) => (
+              <Link
+                key={cat.label}
+                href={cat.href}
+                className={`relative aspect-square flex items-center justify-center overflow-hidden group rounded ${!cat.image ? `bg-gradient-to-b ${cat.bg}` : ""}`}
+              >
+                {cat.image && (
+                  <>
+                    <img src={cat.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/65 transition-colors" />
+                  </>
+                )}
+                {!cat.image && (
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
+                )}
+                <span
+                  className="relative z-10 text-4xl md:text-5xl text-gate-white uppercase group-hover:scale-105 transition-transform"
+                  style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}
+                >
+                  {cat.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* About + Simple Newsletter */}
         <section className="bg-gate-black py-16 px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
               <h2
-                className="text-[clamp(3rem,8vw,7rem)] leading-none text-gate-white uppercase"
-                style={{ fontFamily: "var(--font-bebas)" }}
+                className="font-nhd-medium text-[clamp(2.1rem,5.6vw,4.9rem)] leading-none text-gate-white uppercase"
               >
                 SINCE 2017.
                 <br />
@@ -110,8 +141,8 @@ export default async function Home() {
                 TAKE SHAPE.
               </h2>
             </div>
-            <div className="flex flex-col gap-8 pt-4">
-              <p className="text-gate-muted text-base leading-relaxed">
+            <div className="flex flex-col gap-8">
+              <p className="text-gate-white text-[0.9rem] leading-relaxed">
                 Gate Milano is aimed at companies, agencies and promoters for the purpose to
                 transform the requested event into a unique experience of its kind.
               </p>
@@ -127,48 +158,13 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Category Cards */}
-        <section className="bg-gate-black py-4 px-4">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2">
-            {[
-              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black" },
-              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black" },
-              { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black" },
-            ].map((cat) => (
-              <Link
-                key={cat.label}
-                href={cat.href}
-                className={`relative h-64 flex items-center justify-center bg-gradient-to-b ${cat.bg} overflow-hidden group rounded`}
-              >
-                <span
-                  className="relative z-10 text-4xl md:text-5xl text-gate-white uppercase group-hover:scale-105 transition-transform"
-                  style={{ fontFamily: "var(--font-bebas)" }}
-                >
-                  {cat.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Full Newsletter */}
-        <section className="bg-gate-black py-16 px-4">
-          <div className="max-w-md mx-auto border border-red-600 rounded-xl p-8">
-            <p className="text-sm text-center text-gate-white mb-6">
-              Sign-up now to receive offers and updates
-              <br />
-              for the next events
-            </p>
-            <NewsletterForm variant="full" />
-          </div>
-        </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gate-black border-t border-gate-border py-12 px-4">
+      <footer className="bg-gate-black border-t border-gate-border py-12 px-4" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 300 }}>
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Contact Us</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Contact Us</h4>
             <ul className="space-y-1 text-sm text-gate-muted">
               <li>
                 <a href={`mailto:${email}`} className="hover:text-gate-white transition-colors">
@@ -185,13 +181,13 @@ export default async function Home() {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Careers</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Careers</h4>
             <a href="mailto:careers@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               careers@gatemilano.com
             </a>
           </div>
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Get Direction</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Get Direction</h4>
             <address className="not-italic text-sm text-gate-muted leading-relaxed">
               {address?.street ?? "Via Valtellina 21"}
               <br />
@@ -207,13 +203,13 @@ export default async function Home() {
             </a>
           </div>
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Live</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Live</h4>
             <a href="mailto:live@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               live@gatemilano.com
             </a>
           </div>
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Corporate</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Corporate</h4>
             <a href="mailto:corporate@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               corporate@gatemilano.com
             </a>
@@ -222,11 +218,8 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-gate-border flex items-center justify-between text-xs text-gate-muted">
           <span>© {new Date().getFullYear()} Gate Milano</span>
           <div className="flex gap-4">
-            <a href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
+            <a href="https://www.instagram.com/gatemilano/" target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
               Instagram
-            </a>
-            <a href="https://facebook.com/gateviavaltellina" target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
-              Facebook
             </a>
           </div>
         </div>
