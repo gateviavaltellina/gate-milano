@@ -50,7 +50,13 @@ export default function EventsGrid({ events }: { events: Event[] }) {
             {/* Selling Fast badge */}
             {event.isSellingFast && !event.isSoldOut && (
               <div className="absolute top-0 left-0 right-0 z-10">
-                <Marquee text="TICKETS SELLING FAST" speed={130} />
+                <Marquee text="TICKETS SELLING FAST" speed={130} bgColor="bg-white" textColor="text-red-600" />
+              </div>
+            )}
+            {/* Sold Out badge */}
+            {event.isSoldOut && (
+              <div className="absolute top-0 left-0 right-0 z-10">
+                <Marquee text="SOLD OUT" speed={130} bgColor="bg-red-600" textColor="text-white" />
               </div>
             )}
             {event.image?.asset?._ref ? (
@@ -86,7 +92,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 BUY TICKETS
               </a>
             ) : event.isSoldOut ? (
-              <span className="block bg-red-600 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
+              <span className="block bg-gate-gray text-gate-muted text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
                 SOLD OUT
               </span>
             ) : (

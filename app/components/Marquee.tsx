@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 
-export default function Marquee({ text, speed = 100 }: { text: string; speed?: number }) {
+export default function Marquee({ text, speed = 100, bgColor = "bg-white", textColor = "text-red-600" }: { text: string; speed?: number; bgColor?: string; textColor?: string }) {
   const groupRef = useRef<HTMLDivElement>(null);
   const [groupWidth, setGroupWidth] = useState<number | null>(null);
 
@@ -15,7 +15,7 @@ export default function Marquee({ text, speed = 100 }: { text: string; speed?: n
   const items = Array.from({ length: 12 }).map((_, i) => (
     <span
       key={i}
-      className="inline-flex items-center uppercase tracking-widest text-red-600"
+      className={`inline-flex items-center uppercase tracking-widest ${textColor}`}
       style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.975rem", whiteSpace: "nowrap" }}
     >
       <span className="px-6">{text}</span>
@@ -26,7 +26,7 @@ export default function Marquee({ text, speed = 100 }: { text: string; speed?: n
   const duration = groupWidth ? groupWidth / speed : 10;
 
   return (
-    <div className="overflow-hidden bg-white py-2">
+    <div className={`overflow-hidden ${bgColor} py-2`}>
       <div
         className="flex"
         style={{
