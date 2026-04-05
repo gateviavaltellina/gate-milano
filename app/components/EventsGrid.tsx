@@ -49,7 +49,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
           )}
 
           {/* Poster image */}
-          <
+          <a
             href={event.ticketUrl ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
