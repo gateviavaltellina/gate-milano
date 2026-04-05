@@ -1,29 +1,18 @@
-import Image from "next/image";
+export const revalidate = 30;
+
 import Link from "next/link";
 import { client } from "../sanity/lib/client";
-import { urlFor } from "../sanity/lib/image";
 import NewsletterForm from "./components/NewsletterForm";
-
-interface Event {
-  _id: string;
-  title: string;
-  date: string;
-  genres: string[];
-  ticketUrl?: string;
-  isSoldOut?: boolean;
-  image?: { asset: { _ref: string } };
-}
+import EventsGrid, { type Event } from "./components/EventsGrid";
 
 interface SiteSettings {
   venueName: string;
   description: string;
   address: { street: string; city: string; postalCode: string; region: string };
   email: string;
-  bookingEmail: string;
   phone?: string;
   instagram: string;
   googleMapsUrl?: string;
-  openingHours: string;
 }
 
 async function getEvents(): Promise<Event[]> {
@@ -39,18 +28,8 @@ async function getSiteSettings(): Promise<SiteSettings | null> {
   return client.fetch(`*[_type == "siteSettings"][0]`);
 }
 
-function formatDate(dateStr: string) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-GB", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 const navLinks = [
-  { label: "EVENTS", href: "#events" },
+  { label: "EVENTS", href: "/events" },
   { label: "MAIN ROOM", href: "/main-room" },
   { label: "CLUB ROOM", href: "/club-room" },
   { label: "CORPORATE", href: "/corporate" },
@@ -74,7 +53,7 @@ export default async function Home() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-bold tracking-widest text-gate-white hover:text-gate-red transition-colors"
+              className="text-sm font-bold tracking-widest text-gate-white hover:text-red-600 transition-colors"
             >
               {link.label}
             </Link>
@@ -85,7 +64,6 @@ export default async function Home() {
       <main className="pt-[57px]">
         {/* Hero */}
         <section className="relative min-h-screen flex items-center justify-center bg-gate-black overflow-hidden">
-          {/* Background video — place your file at public/hero.mp4 */}
           <video
             className="absolute inset-0 w-full h-full object-cover opacity-60"
             autoPlay
@@ -95,7 +73,6 @@ export default async function Home() {
           >
             <source src="https://res.cloudinary.com/dhkr9hmw5/video/upload/v1775398568/background-homepage-gate-milano_ad0skc.mp4" type="video/mp4" />
           </video>
-          {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 text-center px-4">
             <h1
@@ -114,90 +91,13 @@ export default async function Home() {
         {/* Events Grid */}
         <section id="events" className="bg-gate-black py-16 px-4">
           <div className="max-w-6xl mx-auto">
-            {events.length === 0 ? (
-              <p className="text-gate-muted text-center py-12">
-                No upcoming events. Check back soon.
-              </p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {events.map((event) => (
-                  <div
-                    key={event._id}
-                    className="border border-gate-border rounded-3xl overflow-hidden flex flex-col"
-                  >
-                    {/* Poster image */}
-                    <div className="relative aspect-square bg-gate-gray">
-                      {event.image?.asset?._ref ? (
-                        <Image
-                          src={urlFor(event.image).width(600).height(600).url()}
-                          alt={event.title}
-                          fill
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span
-                            className="text-4xl text-gate-white uppercase text-center px-4"
-                            style={{ fontFamily: "var(--font-bebas)" }}
-                          >
-                            {event.title}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Buy Tickets button */}
-                    <div className="px-4 pb-2 pt-2">
-                      {event.ticketUrl && !event.isSoldOut ? (
-                        <a
-                          href={event.ticketUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block bg-red-600 hover:bg-red-700 text-white font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full transition-colors"
-                        >
-                          BUY TICKETS
-                        </a>
-                      ) : event.isSoldOut ? (
-                        <span className="block bg-gate-gray text-gate-muted font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full">
-                          SOLD OUT
-                        </span>
-                      ) : (
-                        <span className="block bg-gate-red text-gate-white font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60">
-                          BUY TICKETS
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Info */}
-                    <div className="px-4 pt-2 pb-4 flex flex-col gap-2 bg-gate-black">
-                      <h3 className="font-bold text-xl text-gate-white leading-tight uppercase tracking-wide">
-                        {event.title}
-                      </h3>
-                      {event.genres?.length > 0 && (
-                        <div className="flex flex-wrap gap-1">
-                          {event.genres.map((g) => (
-                            <span
-                              key={g}
-                              className="text-xs border border-gate-border px-2 py-0.5 text-gate-muted rounded-full"
-                            >
-                              {g}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <p className="text-sm text-gate-muted">{formatDate(event.date)}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+            <EventsGrid events={events} />
           </div>
         </section>
 
         {/* About + Simple Newsletter */}
         <section className="bg-gate-black py-16 px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left: big headline */}
             <div>
               <h2
                 className="text-[clamp(3rem,8vw,7rem)] leading-none text-gate-white uppercase"
@@ -214,16 +114,12 @@ export default async function Home() {
                 TAKE SHAPE.
               </h2>
             </div>
-
-            {/* Right: description + simple newsletter */}
             <div className="flex flex-col gap-8 pt-4">
               <p className="text-gate-muted text-base leading-relaxed">
                 Gate Milano is aimed at companies, agencies and promoters for the purpose to
                 transform the requested event into a unique experience of its kind.
               </p>
-
-              {/* Simple newsletter */}
-              <div className="border border-gate-red rounded-xl p-6">
+              <div className="border border-red-600 rounded-xl p-6">
                 <p className="text-sm text-center text-gate-white mb-4">
                   Sign-up now to receive offers and updates
                   <br />
@@ -239,7 +135,7 @@ export default async function Home() {
         <section className="bg-gate-black py-4 px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2">
             {[
-              { label: "EVENTS", href: "#events", bg: "from-blue-900 to-black" },
+              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black" },
               { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black" },
               { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black" },
             ].map((cat) => (
@@ -261,7 +157,7 @@ export default async function Home() {
 
         {/* Full Newsletter */}
         <section className="bg-gate-black py-16 px-4">
-          <div className="max-w-md mx-auto border border-gate-red rounded-xl p-8">
+          <div className="max-w-md mx-auto border border-red-600 rounded-xl p-8">
             <p className="text-sm text-center text-gate-white mb-6">
               Sign-up now to receive offers and updates
               <br />
@@ -278,13 +174,11 @@ export default async function Home() {
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Contact Us</h4>
             <ul className="space-y-1 text-sm text-gate-muted">
-              {email && (
-                <li>
-                  <a href={`mailto:${email}`} className="hover:text-gate-white transition-colors">
-                    {email}
-                  </a>
-                </li>
-              )}
+              <li>
+                <a href={`mailto:${email}`} className="hover:text-gate-white transition-colors">
+                  {email}
+                </a>
+              </li>
               {phone && (
                 <li>
                   <a href={`tel:${phone}`} className="hover:text-gate-white transition-colors">
@@ -294,17 +188,12 @@ export default async function Home() {
               )}
             </ul>
           </div>
-
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Careers</h4>
-            <a
-              href="mailto:careers@gatemilano.com"
-              className="text-sm text-gate-muted hover:text-gate-white transition-colors"
-            >
+            <a href="mailto:careers@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               careers@gatemilano.com
             </a>
           </div>
-
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Get Direction</h4>
             <address className="not-italic text-sm text-gate-muted leading-relaxed">
@@ -321,45 +210,26 @@ export default async function Home() {
               Open in Maps
             </a>
           </div>
-
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Live</h4>
-            <a
-              href="mailto:live@gatemilano.com"
-              className="text-sm text-gate-muted hover:text-gate-white transition-colors"
-            >
+            <a href="mailto:live@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               live@gatemilano.com
             </a>
           </div>
-
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3">Corporate</h4>
-            <a
-              href="mailto:corporate@gatemilano.com"
-              className="text-sm text-gate-muted hover:text-gate-white transition-colors"
-            >
+            <a href="mailto:corporate@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               corporate@gatemilano.com
             </a>
           </div>
         </div>
-
         <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-gate-border flex items-center justify-between text-xs text-gate-muted">
           <span>© {new Date().getFullYear()} Gate Milano</span>
           <div className="flex gap-4">
-            <a
-              href={`https://instagram.com/${instagram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gate-white transition-colors"
-            >
+            <a href={`https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
               Instagram
             </a>
-            <a
-              href="https://facebook.com/gateviavaltellina"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gate-white transition-colors"
-            >
+            <a href="https://facebook.com/gateviavaltellina" target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
               Facebook
             </a>
           </div>
