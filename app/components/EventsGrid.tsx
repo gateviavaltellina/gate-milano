@@ -108,7 +108,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 ))}
               </div>
             )}
-            <p className="text-sm text-gate-muted">{formatDate(event.date)}</p>
+            <p className="text-lg uppercase text-gate-white" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>{formatDate(event.date)}</p>
           </div>
         </div>
       ))}

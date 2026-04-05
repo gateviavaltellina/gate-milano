@@ -42,8 +42,8 @@ export default function Nav() {
       {/* Open menu panel */}
       {open && (
         <div className="fixed inset-0 z-50 flex justify-center px-4 py-3 bg-black/60">
-          <div className="w-full max-w-md bg-gate-black rounded-3xl flex flex-col overflow-hidden">
-            <div className="flex items-center justify-between px-5 py-2.5 border-b border-gate-border">
+          <div className="menu-panel w-full max-w-md bg-gate-black rounded-3xl flex flex-col overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-2.5">
               <Link href="/" onClick={() => setOpen(false)}>
                 <Image src="/logos/GateLogos/250727_MKT_LogoVectorialWhite.svg" alt="Gate Milano" width={60} height={20} />
               </Link>
