@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Gate Milano — Club e spazio eventi a Milano",
   description:
     "Gate Milano lavora nel mondo della musica dal 2017 per l'organizzazione di concerti, eventi, spettacoli e dj set.",
+  icons: {
+    icon: "/logos/GateLogos/250727_MKT_LogoVectorialBlack.svg",
+    shortcut: "/logos/GateLogos/250727_MKT_LogoVectorialBlack.svg",
+  },
   openGraph: {
     title: "Gate Milano",
     description: "The event space where the city sets the stage.",

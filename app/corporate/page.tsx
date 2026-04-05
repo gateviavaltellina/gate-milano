@@ -1,14 +1,15 @@
-import Link from "next/link";
+import Nav from "../components/Nav";
 
 export const metadata = { title: "Corporate — Gate Milano" };
 
 export default function CorporatePage() {
   return (
     <main className="min-h-screen bg-gate-black text-gate-white pt-[57px]">
+      <Nav />
       <section className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
         <h1
           className="text-[clamp(4rem,12vw,10rem)] leading-none uppercase mb-6"
-          style={{ fontFamily: "var(--font-bebas)" }}
+          style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}
         >
           Corporate
         </h1>
@@ -20,12 +21,6 @@ export default function CorporatePage() {
           </a>
           .
         </p>
-        <Link
-          href="/"
-          className="mt-8 text-sm uppercase tracking-widest border border-gate-white px-6 py-2 hover:bg-gate-white hover:text-gate-black transition-colors"
-        >
-          ← Back
-        </Link>
       </section>
     </main>
   );

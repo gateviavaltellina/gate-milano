@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/neue-haas/NeueHaasDisplayBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/neue-haas/NeueHaasDisplayMediu.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueHaasDisplay";
+  src: url("/fonts/neue-haas/NeueHaasDisplayBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --gate-black: #000000;
   --gate-white: #ffffff;
@@ -26,4 +50,8 @@ body {
   background: var(--gate-black);
   color: var(--gate-white);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+body.menu-open .hero-text {
+  opacity: 0;
 }

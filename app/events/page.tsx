@@ -1,5 +1,6 @@
 import { client } from "../../sanity/lib/client";
 import EventsGrid, { type Event } from "../components/EventsGrid";
+import Nav from "../components/Nav";
 
 export const revalidate = 30;
 
@@ -19,30 +20,12 @@ export default async function EventsPage() {
 
   return (
     <main className="min-h-screen bg-gate-black text-gate-white pt-[57px]">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gate-black border-b border-gate-border">
-        <nav className="flex items-center justify-around px-4 py-4">
-          {[
-            { label: "EVENTS", href: "/events" },
-            { label: "MAIN ROOM", href: "/main-room" },
-            { label: "CLUB ROOM", href: "/club-room" },
-            { label: "CORPORATE", href: "/corporate" },
-            { label: "FAQ", href: "/faq" },
-          ].map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-bold tracking-widest text-gate-white hover:text-red-600 transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+      <Nav />
 
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h1
           className="text-[clamp(3rem,8vw,7rem)] leading-none uppercase mb-12"
-          style={{ fontFamily: "var(--font-bebas)" }}
+          style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}
         >
           Events
         </h1>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { client } from "../sanity/lib/client";
 import NewsletterForm from "./components/NewsletterForm";
 import EventsGrid, { type Event } from "./components/EventsGrid";
+import Nav from "./components/Nav";
 
 interface SiteSettings {
   venueName: string;
@@ -28,13 +29,6 @@ async function getSiteSettings(): Promise<SiteSettings | null> {
   return client.fetch(`*[_type == "siteSettings"][0]`);
 }
 
-const navLinks = [
-  { label: "EVENTS", href: "/events" },
-  { label: "MAIN ROOM", href: "/main-room" },
-  { label: "CLUB ROOM", href: "/club-room" },
-  { label: "CORPORATE", href: "/corporate" },
-  { label: "FAQ", href: "/faq" },
-];
 
 export default async function Home() {
   const [events, settings] = await Promise.all([getEvents(), getSiteSettings()]);
@@ -46,22 +40,9 @@ export default async function Home() {
 
   return (
     <>
-      {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gate-black border-b border-gate-border">
-        <nav className="flex items-center justify-around px-4 py-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-sm font-bold tracking-widest text-gate-white hover:text-red-600 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      </header>
+      <Nav />
 
-      <main className="pt-[57px]">
+      <main>
         {/* Hero */}
         <section className="relative min-h-screen flex items-center justify-center bg-gate-black overflow-hidden">
           <video
@@ -76,8 +57,8 @@ export default async function Home() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 text-center px-4">
             <h1
-              className="text-[clamp(4rem,15vw,14rem)] leading-none text-gate-white uppercase"
-              style={{ fontFamily: "var(--font-bebas)" }}
+              className="hero-text text-[clamp(2rem,7.5vw,7rem)] leading-none text-gate-white uppercase"
+              style={{ fontFamily: "NeueHaasDisplay, var(--font-bebas)" }}
             >
               CLUBBING.
               <br />
