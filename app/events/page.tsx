@@ -8,7 +8,7 @@ export const metadata = { title: "Events — Gate Milano" };
 
 async function getEvents(): Promise<Event[]> {
   return client.fetch(
-    `*[_type == "event" && date >= now()] | order(date asc) {
+    `*[_type == "event" && dateTime(date) >= dateTime(now()) - 60*60*6] | order(date asc) {
       _id, title, date, genres, ticketUrl, isSoldOut,
       image { asset { _ref } }
     }`
