@@ -24,13 +24,13 @@ export default function Nav() {
       {/* Closed nav bar */}
       {!open && (
         <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3">
-          <div className="flex items-center justify-between w-full max-w-md bg-white rounded-full px-5 py-1.5 shadow-md">
+          <div className="flex items-center justify-between w-full max-w-md bg-black rounded-full px-5 py-1.5">
             <Link href="/">
-              <Image src="/logos/GateLogos/250727_MKT_LogoVectorialBlack.svg" alt="Gate Milano" width={60} height={20} priority />
+              <Image src="/logos/GateLogos/250727_MKT_LogoVectorialWhite.svg" alt="Gate Milano" width={60} height={20} priority />
             </Link>
             <button
               onClick={() => setOpen(true)}
-              className="text-black text-xs tracking-widest uppercase px-4 py-1.5 bg-black/10 rounded-full hover:bg-black/20 transition-colors"
+              className="text-white text-xs tracking-widest uppercase px-4 py-1.5 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
               style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
             >
               Menu
@@ -42,14 +42,14 @@ export default function Nav() {
       {/* Open menu panel */}
       {open && (
         <div className="fixed inset-0 z-50 flex justify-center px-4 py-3 bg-black/60">
-          <div className="menu-panel w-full max-w-md bg-gate-black rounded-3xl flex flex-col overflow-hidden">
+          <div className="menu-panel w-full max-w-md bg-white rounded-3xl flex flex-col overflow-hidden">
             <div className="flex items-center justify-between px-5 py-2.5">
               <Link href="/" onClick={() => setOpen(false)}>
-                <Image src="/logos/GateLogos/250727_MKT_LogoVectorialWhite.svg" alt="Gate Milano" width={60} height={20} />
+                <Image src="/logos/GateLogos/250727_MKT_LogoVectorialBlack.svg" alt="Gate Milano" width={60} height={20} />
               </Link>
               <button
                 onClick={() => setOpen(false)}
-                className="text-gate-white text-xs tracking-widest uppercase px-4 py-1.5 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                className="text-black text-xs tracking-widest uppercase px-4 py-1.5 bg-black/10 rounded-full hover:bg-black/20 transition-colors"
                 style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
               >
                 Close
@@ -62,7 +62,7 @@ export default function Nav() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-[clamp(1.8rem,5vw,3.5rem)] leading-tight uppercase text-gate-white hover:text-red-600 transition-colors"
+                  className="text-[clamp(1.8rem,5vw,3.5rem)] leading-tight uppercase text-black hover:text-red-600 transition-colors"
                   style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
                 >
                   {link.label}
