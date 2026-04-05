@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "../../sanity/lib/image";
+import Marquee from "./Marquee";
 
 export interface Event {
   _id: string;
@@ -39,15 +40,6 @@ export default function EventsGrid({ events }: { events: Event[] }) {
           key={event._id}
           className="border border-gate-border rounded-3xl overflow-hidden flex flex-col"
         >
-          {/* Selling Fast badge */}
-          {event.isSellingFast && !event.isSoldOut && (
-            <div className="px-4 pt-3">
-              <span className="inline-block bg-red-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                Selling Fast
-              </span>
-            </div>
-          )}
-
           {/* Poster image */}
           <a
             href={event.ticketUrl ?? "#"}
@@ -55,6 +47,12 @@ export default function EventsGrid({ events }: { events: Event[] }) {
             rel="noopener noreferrer"
             className="relative aspect-square bg-gate-gray block"
           >
+            {/* Selling Fast badge */}
+            {event.isSellingFast && !event.isSoldOut && (
+              <div className="absolute top-0 left-0 right-0 z-10">
+                <Marquee text="TICKETS SELLING FAST" speed={130} />
+              </div>
+            )}
             {event.image?.asset?._ref ? (
               <Image
                 src={urlFor(event.image).width(600).height(600).url()}
@@ -82,16 +80,17 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 href={event.ticketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-red-600 hover:bg-red-700 text-white font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full transition-colors"
+                className="block bg-red-600 hover:bg-red-700 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full transition-colors"
+                style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}
               >
                 BUY TICKETS
               </a>
             ) : event.isSoldOut ? (
-              <span className="block bg-gate-gray text-gate-muted font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full">
+              <span className="block bg-red-600 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
                 SOLD OUT
               </span>
             ) : (
-              <span className="block bg-red-600 text-white font-bold text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60">
+              <span className="block bg-red-600 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
                 BUY TICKETS
               </span>
             )}
