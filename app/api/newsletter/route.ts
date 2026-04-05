@@ -30,7 +30,8 @@ export async function POST(req: NextRequest) {
     if (body?.code === "duplicate_parameter") {
       return NextResponse.json({ ok: true });
     }
-    return NextResponse.json({ error: "Brevo error" }, { status: 500 });
+    console.error("Brevo error:", res.status, body);
+    return NextResponse.json({ error: "Brevo error", detail: body }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });
