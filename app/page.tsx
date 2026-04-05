@@ -93,7 +93,7 @@ export default async function Home() {
             loop
             playsInline
           >
-            <source src="https://gatemilano.it/videos/background-homepage-gate-milano.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dhkr9hmw5/video/upload/v1775398568/background-homepage-gate-milano_ad0skc.mp4" type="video/mp4" />
           </video>
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black/40" />
