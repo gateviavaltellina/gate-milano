@@ -82,7 +82,8 @@ export default function FaqPage() {
                   <div
                     key={id}
                     className="py-5 cursor-pointer"
-                    onClick={() => setOpen(open === id ? null : id)}
+                    style={{ touchAction: "manipulation" }}
+                    onMouseDown={() => setOpen(open === id ? null : id)}
                   >
                     <div className="flex items-center justify-between gap-4">
                       <span
@@ -91,7 +92,7 @@ export default function FaqPage() {
                       >
                         {item.q}
                       </span>
-                      <span className="shrink-0 w-8 h-8 rounded-full bg-gate-white text-gate-black flex items-center justify-center text-[1.688rem]" style={{ fontWeight: 300 }}>
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-gate-white text-gate-black flex items-center justify-center text-[1.688rem] pointer-events-none" style={{ fontWeight: 300 }}>
                         {open === id ? "−" : "+"}
                       </span>
                     </div>
