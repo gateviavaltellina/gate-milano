@@ -18,8 +18,8 @@ export default function Marquee({ text, speed = 100, bgColor = "bg-white", textC
       className={`inline-flex items-center uppercase tracking-widest ${textColor}`}
       style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.975rem", whiteSpace: "nowrap" }}
     >
-      <span className="px-6">{text}</span>
-      <span>•</span>
+      <span className="px-6" style={{ fontWeight: 700 }}>{text}</span>
+      <span style={{ fontWeight: 700 }}>•</span>
     </span>
   ));
 

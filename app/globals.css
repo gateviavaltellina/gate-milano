@@ -87,11 +87,6 @@ h5, h6 {
   font-weight: 700;
 }
 
-p, a, span, li, address {
-  font-family: "NeueHaasDisplay", sans-serif;
-  font-weight: 300;
-}
-
 button {
   font-family: "NeueHaasDisplay", sans-serif;
   font-weight: 700;

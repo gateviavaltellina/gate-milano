@@ -49,13 +49,13 @@ export default function EventsGrid({ events }: { events: Event[] }) {
           >
             {/* Selling Fast badge */}
             {event.isSellingFast && !event.isSoldOut && (
-              <div className="absolute top-0 left-0 right-0 z-10">
+              <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
                 <Marquee text="TICKETS SELLING FAST" speed={130} bgColor="bg-white" textColor="text-red-600" />
               </div>
             )}
             {/* Sold Out badge */}
             {event.isSoldOut && (
-              <div className="absolute top-0 left-0 right-0 z-10">
+              <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">
                 <Marquee text="SOLD OUT" speed={130} bgColor="bg-red-600" textColor="text-white" />
               </div>
             )}
