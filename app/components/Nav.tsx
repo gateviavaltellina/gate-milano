@@ -30,7 +30,7 @@ export default function Nav() {
             </Link>
             <button
               onClick={() => setOpen(true)}
-              className="text-white text-xs tracking-widest uppercase px-4 py-1.5 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              className="text-white text-xs uppercase px-4 py-1.5 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
               style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
             >
               Menu
@@ -49,7 +49,7 @@ export default function Nav() {
               </Link>
               <button
                 onClick={() => setOpen(false)}
-                className="text-black text-xs tracking-widest uppercase px-4 py-1.5 bg-black/10 rounded-full hover:bg-black/20 transition-colors"
+                className="text-black text-xs uppercase px-4 py-1.5 bg-black/10 rounded-full hover:bg-black/20 transition-colors"
                 style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
               >
                 Close

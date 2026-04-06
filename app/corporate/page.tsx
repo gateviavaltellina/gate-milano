@@ -37,13 +37,13 @@ export default function CorporatePage() {
             Browse location photos and videos, download our full technical specifications, or access the venue floor plans — all in one place.
           </p>
           <div className="flex flex-col gap-4 items-center">
-            <a href="https://www.dropbox.com/scl/fo/s9jo7pyf4ow36zcpopoqa/ALbFPweHtiVsOP-XrrPAfj4?rlkey=rpgs97n9ooja64bsxv26rigc9&st=akplic2w" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase tracking-widest px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
+            <a href="https://www.dropbox.com/scl/fo/s9jo7pyf4ow36zcpopoqa/ALbFPweHtiVsOP-XrrPAfj4?rlkey=rpgs97n9ooja64bsxv26rigc9&st=akplic2w" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
               Pics &amp; Videos of Location
             </a>
-            <a href="https://www.dropbox.com/scl/fo/onv2q2eky03e95exg0rbs/AN4IlUw2E7uRDYAVfHQ75mM?rlkey=ma7qv2indliu94w3bp9oxopez&st=ufjgxk9p&dl=1" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase tracking-widest px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
+            <a href="https://www.dropbox.com/scl/fo/onv2q2eky03e95exg0rbs/AN4IlUw2E7uRDYAVfHQ75mM?rlkey=ma7qv2indliu94w3bp9oxopez&st=ufjgxk9p&dl=1" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
               Tech Specs
             </a>
-            <a href="https://www.dropbox.com/scl/fo/j84iyp5etlfzaumvb9lwy/ANZJV2q3_rMopnoJgg3QtfM?rlkey=d73tu6zwwbuah5815mpsthgo9&st=1i1jdbti&dl=1" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase tracking-widest px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
+            <a href="https://www.dropbox.com/scl/fo/j84iyp5etlfzaumvb9lwy/ANZJV2q3_rMopnoJgg3QtfM?rlkey=d73tu6zwwbuah5815mpsthgo9&st=1i1jdbti&dl=1" target="_blank" rel="noopener noreferrer" className="w-full max-w-sm border border-gate-white text-gate-white text-[0.875rem] uppercase px-6 py-4 rounded-full hover:bg-gate-white hover:text-gate-black transition-colors text-center" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>
               Floor Plans
             </a>
           </div>

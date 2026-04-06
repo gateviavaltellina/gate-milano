@@ -15,7 +15,7 @@ export default function Marquee({ text, speed = 100, bgColor = "bg-white", textC
   const items = Array.from({ length: 12 }).map((_, i) => (
     <span
       key={i}
-      className={`inline-flex items-center uppercase tracking-widest ${textColor}`}
+      className={`inline-flex items-center uppercase ${textColor}`}
       style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.975rem", whiteSpace: "nowrap" }}
     >
       <span className="px-6" style={{ fontWeight: 700 }}>{text}</span>

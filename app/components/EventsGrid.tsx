@@ -87,17 +87,17 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 href={event.ticketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-red-600 hover:bg-red-700 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full transition-colors"
+                className="block bg-red-600 hover:bg-red-700 text-white text-sm uppercase py-3 text-center rounded-full transition-colors"
                 style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}
               >
                 BUY TICKETS
               </a>
             ) : event.isSoldOut ? (
-              <span className="block bg-gate-gray text-gate-muted text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
+              <span className="block bg-gate-gray text-gate-muted text-sm uppercase py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
                 SOLD OUT
               </span>
             ) : (
-              <span className="block bg-red-600 text-white text-sm uppercase tracking-widest py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
+              <span className="block bg-red-600 text-white text-sm uppercase py-3 text-center rounded-full opacity-60" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}>
                 BUY TICKETS
               </span>
             )}
