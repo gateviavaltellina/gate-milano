@@ -29,7 +29,7 @@ export default function ClubRoomPage() {
       </section>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="https://res.cloudinary.com/dhkr9hmw5/video/upload/v1775486240/club-room-gate-milano-entacles-4-5_xl4flx.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dhkr9hmw5/video/upload/v1775491215/club-room-gate-milano-tentacles_bn9k4o.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 py-24 text-center">
