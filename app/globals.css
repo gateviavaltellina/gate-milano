@@ -50,14 +50,20 @@
   --color-gate-gray: var(--gate-gray);
   --color-gate-border: var(--gate-border);
   --color-gate-muted: var(--gate-muted);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: "NeueHaasDisplay", var(--font-geist-sans);
   --font-display: var(--font-bebas);
 }
 
 body {
   background: var(--gate-black);
   color: var(--gate-white);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: "NeueHaasDisplay", var(--font-sans), Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "NeueHaasDisplay", sans-serif;
+  font-weight: 500;
 }
 
 body.menu-open .hero-text {

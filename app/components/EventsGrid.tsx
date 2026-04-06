@@ -45,7 +45,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
             href={event.ticketUrl ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative aspect-square bg-gate-gray block"
+            className="relative aspect-square bg-gate-gray block overflow-hidden"
           >
             {/* Selling Fast badge */}
             {event.isSellingFast && !event.isSoldOut && (
@@ -66,6 +66,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 fill
                 className="object-cover hover:opacity-80 transition-opacity"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                style={(event.isSellingFast && !event.isSoldOut) || event.isSoldOut ? { top: '38px' } : {}}
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
@@ -108,7 +109,8 @@ export default function EventsGrid({ events }: { events: Event[] }) {
               href={event.ticketUrl ?? "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-xl text-gate-white leading-tight uppercase tracking-wide hover:text-red-500 transition-colors"
+              className="text-xl text-gate-white leading-tight uppercase tracking-wide hover:text-red-500 transition-colors"
+              style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
             >
               {event.title}
             </a>

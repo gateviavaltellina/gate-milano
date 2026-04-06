@@ -63,7 +63,8 @@ export default function NewsletterForm({ variant = "full" }: { variant?: "simple
       <button
         type="submit"
         disabled={status === "loading"}
-        className="bg-gate-red hover:bg-gate-red-dark text-gate-white font-bold py-3 px-6 rounded-full transition-colors uppercase tracking-wide text-sm disabled:opacity-60"
+        className="bg-gate-red hover:bg-gate-red-dark text-gate-white py-3 px-6 rounded-full transition-colors uppercase tracking-wide text-sm disabled:opacity-60"
+        style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
       >
         {status === "loading" ? "..." : "Subscribe"}
       </button>

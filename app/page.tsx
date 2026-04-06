@@ -72,7 +72,7 @@ export default async function Home() {
           <div className="relative z-10 text-center px-4">
             <h1
               className="hero-text text-[clamp(2rem,7.5vw,7rem)] leading-none text-gate-white uppercase"
-              style={{ fontFamily: "NeueHaasDisplay, var(--font-bebas)" }}
+              style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}
             >
               CLUBBING.
               <br />
@@ -142,15 +142,13 @@ export default async function Home() {
               </h2>
             </div>
             <div className="flex flex-col gap-8">
-              <p className="text-gate-white text-[0.9rem] leading-relaxed">
+              <p className="text-gate-white text-[0.9rem] leading-relaxed" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 300 }}>
                 Gate Milano is aimed at companies, agencies and promoters for the purpose to
                 transform the requested event into a unique experience of its kind.
               </p>
               <div className="border border-red-600 rounded-3xl p-6">
-                <p className="text-sm text-center text-gate-white mb-4">
-                  Sign-up now to receive offers and updates
-                  <br />
-                  for the next events
+                <p className="text-sm text-center text-gate-white mb-4" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}>
+                  Sign-up now to receive offers and updates for the next events
                 </p>
                 <NewsletterForm variant="simple" />
               </div>
@@ -164,7 +162,7 @@ export default async function Home() {
       <footer className="bg-gate-black border-t border-gate-border py-12 px-4" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 300 }}>
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
           <div>
-            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Contact Us</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}>Contact Us</h4>
             <ul className="space-y-1 text-sm text-gate-muted">
               <li>
                 <a href={`mailto:${email}`} className="hover:text-gate-white transition-colors">
@@ -181,13 +179,13 @@ export default async function Home() {
             </ul>
           </div>
           <div>
-            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Careers</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}>Careers</h4>
             <a href="mailto:careers@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               careers@gatemilano.com
             </a>
           </div>
           <div>
-            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Get Direction</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}>Get Direction</h4>
             <address className="not-italic text-sm text-gate-muted leading-relaxed">
               {address?.street ?? "Via Valtellina 21"}
               <br />
@@ -203,13 +201,13 @@ export default async function Home() {
             </a>
           </div>
           <div>
-            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Live</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}>Live</h4>
             <a href="mailto:live@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               live@gatemilano.com
             </a>
           </div>
           <div>
-            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontWeight: 700 }}>Corporate</h4>
+            <h4 className="text-[0.9rem] uppercase tracking-widest mb-3" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}>Corporate</h4>
             <a href="mailto:corporate@gatemilano.com" className="text-sm text-gate-muted hover:text-gate-white transition-colors">
               corporate@gatemilano.com
             </a>
