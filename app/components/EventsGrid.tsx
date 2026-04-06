@@ -110,7 +110,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-xl text-gate-white leading-tight uppercase tracking-wide hover:text-red-500 transition-colors"
-              style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700 }}
+              style={{ fontWeight: 500 }}
             >
               {event.title}
             </a>
@@ -131,7 +131,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 ))}
               </div>
             )}
-            <a href={event.ticketUrl ?? "#"} target="_blank" rel="noopener noreferrer" className="text-lg uppercase text-gate-white hover:text-red-500 transition-colors" style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}>{formatDate(event.date)}</a>
+            <a href={event.ticketUrl ?? "#"} target="_blank" rel="noopener noreferrer" className="text-lg uppercase text-gate-white hover:text-red-500 transition-colors" style={{ fontWeight: 500 }}>{formatDate(event.date)}</a>
           </div>
         </div>
       ))}

@@ -39,8 +39,8 @@ export default async function EventsPage() {
 
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h1
-          className="text-[clamp(3rem,8vw,7rem)] leading-none uppercase mb-12 text-center"
-          style={{ fontFamily: "NeueHaasDisplay", fontWeight: 900 }}
+          className="text-[clamp(2rem,7.5vw,6rem)] leading-none uppercase mb-12 text-center"
+          style={{ fontFamily: "NeueHaasDisplay", fontWeight: 500 }}
         >
           Events
         </h1>
