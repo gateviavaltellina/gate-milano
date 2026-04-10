@@ -25,7 +25,7 @@ const venueOrder: Record<string, number> = {
 
 async function getEvents(): Promise<Event[]> {
   const events = await client.fetch(
-    `*[_type == "event" && dateTime(date) >= dateTime(now()) - 60*60*6] | order(date asc) {
+    `*[_type == "event" && dateTime(date) >= dateTime(now()) - 60*60*6 && (!defined(publishAt) || dateTime(publishAt) <= dateTime(now()))] | order(date asc) {
       _id, title, date, genres, venue, ticketUrl, isSoldOut, isSellingFast,
       image { asset { _ref } }
     }`

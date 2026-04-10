@@ -88,6 +88,17 @@ export const event = defineType({
       type: "boolean",
       initialValue: false,
     }),
+    defineField({
+      name: "publishAt",
+      title: "Schedule Publish Date",
+      type: "datetime",
+      description: "When this event should go live on the website. Leave empty to publish immediately.",
+      options: {
+        dateFormat: "MMMM DD, YYYY",
+        timeFormat: "hh:mm A",
+        timeStep: 15,
+      },
+    }),
   ],
   orderings: [
     {
