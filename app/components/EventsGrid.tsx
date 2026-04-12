@@ -3,25 +3,14 @@
 import Image from "next/image";
 import { urlFor } from "../../sanity/lib/image";
 import Marquee from "./Marquee";
+import { sendGAEvent } from "@next/third-parties/google";
 
 function trackTicketClick(eventTitle: string, eventDate: string) {
-  if (typeof window === "undefined") return;
-  const w = window as any;
-  w.dataLayer = w.dataLayer || [];
-  if (typeof w.gtag === "function") {
-    w.gtag("event", "ticket_click", {
-      event_category: "conversion",
-      event_label: eventTitle,
-      event_date: eventDate,
-    });
-  } else {
-    w.dataLayer.push({
-      event: "ticket_click",
-      event_category: "conversion",
-      event_label: eventTitle,
-      event_date: eventDate,
-    });
-  }
+  sendGAEvent("event", "ticket_click", {
+    event_category: "conversion",
+    event_label: eventTitle,
+    event_date: eventDate,
+  });
 }
 
 export interface Event {
