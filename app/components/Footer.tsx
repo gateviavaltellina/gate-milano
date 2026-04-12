@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { client } from "../../sanity/lib/client";
 
 async function getSettings() {
@@ -73,6 +74,12 @@ export default async function Footer() {
           <a href="https://www.instagram.com/gatemilano/" target="_blank" rel="noopener noreferrer" className="hover:text-gate-white transition-colors">
             Instagram
           </a>
+          <Link href="/privacy-policy" className="hover:text-gate-white transition-colors">
+            Privacy Policy
+          </Link>
+          <Link href="/cookie-policy" className="hover:text-gate-white transition-colors">
+            Cookie Policy
+          </Link>
         </div>
       </div>
     </footer>
