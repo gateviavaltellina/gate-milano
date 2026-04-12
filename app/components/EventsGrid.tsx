@@ -1,6 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import { urlFor } from "../../sanity/lib/image";
 import Marquee from "./Marquee";
+
+function trackTicketClick(eventTitle: string, eventDate: string) {
+  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+    (window as any).gtag("event", "ticket_click", {
+      event_category: "conversion",
+      event_label: eventTitle,
+      event_date: eventDate,
+    });
+  }
+}
 
 export interface Event {
   _id: string;
@@ -46,6 +58,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
             target="_blank"
             rel="noopener noreferrer"
             className="relative aspect-square bg-gate-gray block overflow-hidden"
+            onClick={() => trackTicketClick(event.title, event.date)}
           >
             {/* Selling Fast badge */}
             {event.isSellingFast && !event.isSoldOut && (
@@ -89,6 +102,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 rel="noopener noreferrer"
                 className="block bg-red-600 hover:bg-red-700 text-white text-sm uppercase py-3 text-center rounded-full transition-colors"
                 style={{ fontFamily: "NeueHaasDisplay", fontWeight: 700, fontSize: "0.966rem" }}
+                onClick={() => trackTicketClick(event.title, event.date)}
               >
                 BUY TICKETS
               </a>
@@ -111,6 +125,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
               rel="noopener noreferrer"
               className="text-xl text-gate-white leading-tight uppercase tracking-wide hover:text-red-500 transition-colors"
               style={{ fontWeight: 500 }}
+              onClick={() => trackTicketClick(event.title, event.date)}
             >
               {event.title}
             </a>
@@ -131,7 +146,7 @@ export default function EventsGrid({ events }: { events: Event[] }) {
                 ))}
               </div>
             )}
-            <a href={event.ticketUrl ?? "#"} target="_blank" rel="noopener noreferrer" className="text-lg uppercase text-gate-white hover:text-red-500 transition-colors" style={{ fontWeight: 500 }}>{formatDate(event.date)}</a>
+            <a href={event.ticketUrl ?? "#"} target="_blank" rel="noopener noreferrer" className="text-lg uppercase text-gate-white hover:text-red-500 transition-colors" style={{ fontWeight: 500 }} onClick={() => trackTicketClick(event.title, event.date)}>{formatDate(event.date)}</a>
           </div>
         </div>
       ))}
