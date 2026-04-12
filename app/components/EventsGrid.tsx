@@ -5,8 +5,18 @@ import { urlFor } from "../../sanity/lib/image";
 import Marquee from "./Marquee";
 
 function trackTicketClick(eventTitle: string, eventDate: string) {
-  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "ticket_click", {
+  if (typeof window === "undefined") return;
+  const w = window as any;
+  w.dataLayer = w.dataLayer || [];
+  if (typeof w.gtag === "function") {
+    w.gtag("event", "ticket_click", {
+      event_category: "conversion",
+      event_label: eventTitle,
+      event_date: eventDate,
+    });
+  } else {
+    w.dataLayer.push({
+      event: "ticket_click",
       event_category: "conversion",
       event_label: eventTitle,
       event_date: eventDate,
