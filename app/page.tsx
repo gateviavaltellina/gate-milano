@@ -90,8 +90,8 @@ export default async function Home() {
         <section className="bg-gate-black py-4 px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2">
             {[
-              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black", image: "/images/backgrounds/main-room-2.jpg" },
-              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black", image: "/images/backgrounds/main-room-1.jpg" },
+              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black", image: "/images/backgrounds/events.jpg" },
+              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black", image: "/images/backgrounds/live-dj-set.jpg" },
               { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black", image: "/images/backgrounds/main-room-3.jpg" },
             ].map((cat) => (
               <Link
