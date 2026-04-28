@@ -62,7 +62,7 @@ export default async function Home() {
             loop
             playsInline
           >
-            <source src="https://res.cloudinary.com/dhkr9hmw5/video/upload/v1775398568/background-homepage-gate-milano_ad0skc.mp4" type="video/mp4" />
+            <source src="/videos/background-homepage-gate-milano.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 text-center px-4">
@@ -90,9 +90,9 @@ export default async function Home() {
         <section className="bg-gate-black py-4 px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-2">
             {[
-              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775418580/20260321_PhotoIHateModels-33_gadeub_c_fill_w_1200_h_1200_ar_1_1_uib3sc.webp" },
-              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775419340/Photo_01-03-26_04_49_58_ysseqo_c_fill_w_1200_h_1200_ar_1_1_l5vz2d.webp" },
-              { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black", image: "https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775419244/GateMainRoom-ph-12_11zon_m2cpms_c_fill_w_1200_h_1200_ar_1_1_zukpwp.webp" },
+              { label: "EVENTS", href: "/events", bg: "from-blue-900 to-black", image: "/images/backgrounds/main-room-2.jpg" },
+              { label: "LIVE & DJ SET", href: "/main-room", bg: "from-indigo-900 to-black", image: "/images/backgrounds/main-room-1.jpg" },
+              { label: "CORPORATE", href: "/corporate", bg: "from-amber-900 to-black", image: "/images/backgrounds/main-room-3.jpg" },
             ].map((cat) => (
               <Link
                 key={cat.label}

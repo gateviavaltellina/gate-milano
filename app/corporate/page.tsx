@@ -7,7 +7,7 @@ export default function CorporatePage() {
     <main className="min-h-screen bg-gate-black text-gate-white">
       <Nav />
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src="https://res.cloudinary.com/dhkr9hmw5/image/upload/v1775493250/gate-milano-corporate_qrsrb0.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="/images/backgrounds/main-room-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4">
           <h1
